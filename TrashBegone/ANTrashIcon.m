@@ -40,8 +40,8 @@ static NSData * pngData(NSImage * image);
 
 + (ANTrashIcon *)trashForDirectory:(NSString *)resources {
     NSMutableArray * images = [NSMutableArray array];
-    NSArray * names = @[@"trashemptyreflection.png", @"trashemptyreflection@2x.png",
-                        @"trashfullreflection.png", @"trashfullreflection@2x.png"];
+    NSArray * names = @[@"trashempty@2x.png", @"trashemptyreflection@2x.png",
+                        @"trashfull@2x.png", @"trashfullreflection@2x.png"];
     for (NSString * name in names) {
         NSString * path = [resources stringByAppendingPathComponent:name];
         NSImage * image = [[NSImage alloc] initWithContentsOfFile:path];
