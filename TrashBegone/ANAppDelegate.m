@@ -48,7 +48,7 @@
     ANSimpleTrashIcon * trash = [ANSimpleTrashIcon trashWithFull:fullImage.image
                                                            empty:emptyImage.image];
     if (!trash) {
-        return (void)NSRunAlertPanel(@"Error", @"There was an error processing your input. You must set all images, and you must", @"OK", nil, nil);
+        return (void)NSRunAlertPanel(@"Error", @"There was an error processing your input. You must set both images, and they must be 256x256.", @"OK", nil, nil);
     }
     [self setTrashIcon:trash];
 }
@@ -64,6 +64,11 @@
 
 - (IBAction)restoreFromBackup:(id)sender {
     [self setTrashIcon:backup];
+}
+
+- (IBAction)backToMacPro:(id)sender {
+    fullImage.image = [NSImage imageNamed:@"trashfull@2x.png"];
+    emptyImage.image = [NSImage imageNamed:@"trashempty@2x.png"];
 }
 
 - (void)setTrashIcon:(ANSimpleTrashIcon *)icon {

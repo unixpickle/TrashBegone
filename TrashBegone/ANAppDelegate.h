@@ -27,6 +27,7 @@
 - (IBAction)setIconPressed:(id)sender;
 - (IBAction)makeBackup:(id)sender;
 - (IBAction)restoreFromBackup:(id)sender;
+- (IBAction)backToMacPro:(id)sender;
 
 - (void)setTrashIcon:(ANSimpleTrashIcon *)icon;
 
