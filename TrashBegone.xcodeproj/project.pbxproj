@@ -33,6 +33,7 @@
 		FAAF8C701863B39E0049B692 /* BitmapScaleManipulator.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAF8C641863B39E0049B692 /* BitmapScaleManipulator.m */; };
 		FAAF8C721863BD740049B692 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAAF8C711863BD740049B692 /* Security.framework */; };
 		FAAF8CB51863BFA80049B692 /* ANSimpleTrashIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAF8CB41863BFA80049B692 /* ANSimpleTrashIcon.m */; };
+		FAAF8CC21863CAB00049B692 /* fullicon.icns in Resources */ = {isa = PBXBuildFile; fileRef = FAAF8CC11863CAB00049B692 /* fullicon.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		FAAF8C711863BD740049B692 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		FAAF8CB31863BFA80049B692 /* ANSimpleTrashIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSimpleTrashIcon.h; sourceTree = "<group>"; };
 		FAAF8CB41863BFA80049B692 /* ANSimpleTrashIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANSimpleTrashIcon.m; sourceTree = "<group>"; };
+		FAAF8CC11863CAB00049B692 /* fullicon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = fullicon.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 		FAAF8C191863ADDF0049B692 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FAAF8CC11863CAB00049B692 /* fullicon.icns */,
 				FAAF8C1A1863ADDF0049B692 /* TrashBegone-Info.plist */,
 				FAAF8C1B1863ADDF0049B692 /* InfoPlist.strings */,
 				FAAF8C1E1863ADDF0049B692 /* main.m */,
@@ -338,6 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAAF8C1D1863ADDF0049B692 /* InfoPlist.strings in Resources */,
+				FAAF8CC21863CAB00049B692 /* fullicon.icns in Resources */,
 				FAAF8C2B1863ADDF0049B692 /* Images.xcassets in Resources */,
 				FAAF8C231863ADDF0049B692 /* Credits.rtf in Resources */,
 				FAAF8C291863ADDF0049B692 /* MainMenu.xib in Resources */,
