@@ -10,6 +10,10 @@
 
 @implementation ANAppDelegate
 
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
+    return YES;
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     backup = [ANTrashIcon trashAppropriateForDirectory:[self.class backupPath]];
     if (!backup) {
