@@ -10,9 +10,66 @@
 
 @implementation ANAppDelegate
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
-    // Insert code here to initialize your application
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    backup = [ANTrashIcon trashAppropriateForDirectory:[self.class backupPath]];
+    if (!backup) {
+        backup = [ANTrashIcon trashAppropriateForDirectory:[self.class dockResourcesPath]];
+        [backup writeToDirectory:[self.class backupPath]];
+        current = backup;
+    } else {
+        current = [ANTrashIcon trashAppropriateForDirectory:[self.class dockResourcesPath]];
+    }
+    
+    currentImage.image = current.empty2x;
+    backupImage.image = backup.empty2x;
+    [[NSRunningApplication currentApplication] activateWithOptions:NSApplicationActivateIgnoringOtherApps];
+}
+
++ (NSString *)backupPath {
+    NSString * path = @"/Users/Shared/.dock_trash_backup";
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:NULL]) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:path
+                                  withIntermediateDirectories:YES
+                                                   attributes:@{NSFilePosixPermissions: @(0777)}
+                                                        error:nil];
+    }
+    return path;
+}
+
++ (NSString *)dockResourcesPath {
+    return @"/System/Library/CoreServices/Dock.app/Contents/Resources";
+}
+
+- (IBAction)setIconPressed:(id)sender {
+    ANSimpleTrashIcon * trash = [ANSimpleTrashIcon trashWithFull:fullImage.image
+                                                           empty:emptyImage.image];
+    if (!trash) {
+        return (void)NSRunAlertPanel(@"Error", @"There was an error processing your input. You must set all images, and you must", @"OK", nil, nil);
+    }
+    [self setTrashIcon:trash];
+}
+
+- (IBAction)makeBackup:(id)sender {
+    NSInteger result = NSRunAlertPanel(@"Are you sure?", @"There is already a backup. Making a new backup will overwrite the old one, so if you have replaced your old Trash icon you will not be able to get it back.",
+                                       @"Cancel", @"Continue", nil);
+    if (result == 1) return;
+    backup = [ANTrashIcon trashAppropriateForDirectory:[self.class dockResourcesPath]];
+    [backup writeToDirectory:[self.class backupPath]];
+    backupImage.image = backup.empty2x;
+}
+
+- (IBAction)restoreFromBackup:(id)sender {
+    [self setTrashIcon:backup];
+}
+
+- (void)setTrashIcon:(ANSimpleTrashIcon *)icon {
+    if (![icon writeToDirectory:[self.class dockResourcesPath]]) {
+        NSRunAlertPanel(@"Error", @"Failed to overwrite resource.", @"OK", nil, nil);
+    } else {
+        current = icon;
+        currentImage.image = icon.empty2x;
+        [ANTrashIcon restartNecessaryServices];
+    }
 }
 
 @end

@@ -7,9 +7,27 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "ANTrashIcon.h"
 
-@interface ANAppDelegate : NSObject <NSApplicationDelegate>
+@interface ANAppDelegate : NSObject <NSApplicationDelegate> {
+    IBOutlet NSImageView * currentImage;
+    IBOutlet NSImageView * backupImage;
+    IBOutlet NSImageView * fullImage;
+    IBOutlet NSImageView * emptyImage;
+    
+    ANSimpleTrashIcon * backup;
+    ANSimpleTrashIcon * current;
+}
 
-@property (assign) IBOutlet NSWindow *window;
+@property (assign) IBOutlet NSWindow * window;
+
++ (NSString *)backupPath;
++ (NSString *)dockResourcesPath;
+
+- (IBAction)setIconPressed:(id)sender;
+- (IBAction)makeBackup:(id)sender;
+- (IBAction)restoreFromBackup:(id)sender;
+
+- (void)setTrashIcon:(ANSimpleTrashIcon *)icon;
 
 @end
